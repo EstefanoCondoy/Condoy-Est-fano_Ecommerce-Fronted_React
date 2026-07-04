@@ -1,0 +1,115 @@
+{
+  "info": {
+    "_postman_id": "3e92e8d0-99fd-4b38-b4bb-18e683100001",
+    "name": "Backend E-commerce",
+    "description": "Pruebas de la API REST del laboratorio.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Registrar usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Jaime\",\n  \"lastName\": \"Sayago\",\n  \"email\": \"jaime@epn.edu.ec\",\n  \"password\": \"123456\",\n  \"address\": \"Quito\",\n  \"phoneNumber\": \"0999999999\"\n}"
+            },
+            "url": "{{baseUrl}}/api/users/register"
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"jaime@epn.edu.ec\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": "{{baseUrl}}/api/users/login"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "Crear producto",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Laptop Lenovo\",\n  \"price\": 850.99,\n  \"description\": \"Laptop para desarrollo de software\",\n  \"amount\": 10,\n  \"imageUrl\": \"https://example.com/laptop.jpg\"\n}"
+            },
+            "url": "{{baseUrl}}/api/products"
+          }
+        },
+        {
+          "name": "Listar productos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/products"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Recibos",
+      "item": [
+        {
+          "name": "Crear recibo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 1,\n  \"items\": [\n    {\n      \"productId\": 1,\n      \"quantity\": 2\n    }\n  ]\n}"
+            },
+            "url": "{{baseUrl}}/api/receipts"
+          }
+        },
+        {
+          "name": "Listar recibos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/receipts"
+          }
+        }
+      ]
+    }
+  ]
+}
